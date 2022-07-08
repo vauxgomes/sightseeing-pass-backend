@@ -8,8 +8,8 @@ exports.up = function (knex) {
     table.text('description').notNullable()
     table.string('address', 255).notNullable()
 
-    table.float('latitude')
-    table.float('longitude')
+    table.decimal('latitude')
+    table.decimal('longitude')
 
     table.integer('num_likes').notNullable().defaultTo(0)
     table.integer('num_comments').notNullable().defaultTo(0)
