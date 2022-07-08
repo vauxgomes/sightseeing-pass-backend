@@ -1,27 +1,27 @@
 exports.up = function (knex) {
-    console.log("Migration: LOCATIONS");
+  console.log('Migration: LOCATIONS')
 
-    return knex.schema.createTable("locations", (table) => {
-        table.increments("id").primary();
+  return knex.schema.createTable('locations', (table) => {
+    table.increments('id').primary()
 
-        table.string("title", 255).notNullable();
-        table.text("description").notNullable();
-        table.string("address", 255).notNullable();
+    table.string('title', 255).notNullable()
+    table.text('description').notNullable()
+    table.string('address', 255).notNullable()
 
-        table.float("latitude");
-        table.float("longitude");
+    table.float('latitude')
+    table.float('longitude')
 
-        table.integer("num_likes").notNullable().defaultTo(0);
-        table.integer("num_comments").notNullable().defaultTo(0);
+    table.integer('num_likes').notNullable().defaultTo(0)
+    table.integer('num_comments').notNullable().defaultTo(0)
 
-        table.integer("user_id").notNullable();
-        table.foreign("user_id").references("users.id").onDelete("CASCADE");
+    table.integer('user_id').notNullable()
+    table.foreign('user_id').references('users.id').onDelete('CASCADE')
 
-        table.timestamp("created_at").notNullable().defaultTo(knex.fn.now());
-        table.timestamp("updated_at").notNullable().defaultTo(knex.fn.now());
-    });
-};
+    table.timestamp('created_at').notNullable().defaultTo(knex.fn.now())
+    table.timestamp('updated_at').notNullable().defaultTo(knex.fn.now())
+  })
+}
 
 exports.down = function (knex) {
-    return knex.schema.dropTable("locations");
-};
+  return knex.schema.dropTable('locations')
+}
